@@ -1,0 +1,42 @@
+# Gradle work
+.gradle
+build
+
+# Maven work
+target
+
+# IntelliJ IDEA work
+*.idea
+*.iml
+*.eml
+*.userlibraries
+*.ipr
+*.iws
+*.vscode
+*.settings
+.classPath
+.project
+atlassian-ide-plugin.xml
+
+# Android
+local.properties
+
+# Mac OS X
+.DS_Store
+
+# Except .gitignore
+!.gitignore
+taotao-common/src/main/resources/
+taotao-common/src/test/
+taotao-manager/taotao-manager-mapper/src/test/
+taotao-manager/taotao-manager-pojo/src/main/resources/
+taotao-manager/taotao-manager-service/src/main/resources/
+taotao-manager/taotao-manager-service/src/test/
+taotao-manager/taotao-manager-web/src/main/webapp/
+taotao-order/src/test/
+taotao-portal/src/test/
+taotao-rest/src/test/java/com/taotao/service/
+taotao-search/src/test/java/com/
+taotao-springboot/src/main/resources/
+taotao-springboot/src/test/
+taotao-sso/src/test/
