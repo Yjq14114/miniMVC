@@ -10,12 +10,20 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>chapter1</module>
+        <module>chapter2</module>
+        <module>miniMVC_Utils</module>
+        <module>commons</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jsp.version>2.2</jsp.version>
         <jstl.version>1.2</jstl.version>
+        <junit.version>4.11</junit.version>
+        <slfj.version>1.7.7</slfj.version>
+        <mysql.version>5.1.33</mysql.version>
+        <lang3.version>3.3.2</lang3.version>
+        <collections4.version>4.0</collections4.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -39,6 +47,33 @@
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
                 <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slfj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${collections4.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
