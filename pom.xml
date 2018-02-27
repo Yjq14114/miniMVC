@@ -23,6 +23,7 @@
         <mysql.version>5.1.33</mysql.version>
         <lang3.version>3.3.2</lang3.version>
         <collections4.version>4.0</collections4.version>
+        <dbutils.version>1.6</dbutils.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -73,6 +74,11 @@
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbutils</groupId>
+                <artifactId>commons-dbutils</artifactId>
+                <version>${dbutils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
