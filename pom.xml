@@ -11,7 +11,6 @@
     <modules>
         <module>chapter1</module>
         <module>chapter2</module>
-        <module>miniMVC_Utils</module>
         <module>commons</module>
     </modules>
     <properties>
@@ -77,4 +76,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <!-- 配置远程仓库 -->
+    <repositories><!-- 代码库 -->
+        <repository>
+            <id>maven-ali</id>
+            <url>http://central.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
