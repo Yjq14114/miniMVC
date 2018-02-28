@@ -43,11 +43,8 @@ public class CustomerService {
 //            DatabaseHelper.closeConnection(conn);
 //        }
         String sql = "select * from customer";
-        try {
-            return DatabaseHelper.queryEntityList(Customer.class, sql);
-        } finally {
-            DatabaseHelper.closeConnection();
-        }
+        return DatabaseHelper.queryEntityList(Customer.class, sql);
+
     }
 
     /**

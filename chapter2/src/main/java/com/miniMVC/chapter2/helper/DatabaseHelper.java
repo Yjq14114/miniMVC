@@ -163,6 +163,7 @@ public class DatabaseHelper {
         }
         return conn;
     }
+    @Deprecated
     public static void closeConnection() {
         Connection conn = CONNECTION_THREAD_LOCAL.get();
         if (conn != null) {
