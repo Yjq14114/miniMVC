@@ -24,6 +24,7 @@
         <lang3.version>3.3.2</lang3.version>
         <collections4.version>4.0</collections4.version>
         <dbutils.version>1.6</dbutils.version>
+        <dbcp2.version>2.0.1</dbcp2.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -79,6 +80,11 @@
                 <groupId>commons-dbutils</groupId>
                 <artifactId>commons-dbutils</artifactId>
                 <version>${dbutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${dbcp2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

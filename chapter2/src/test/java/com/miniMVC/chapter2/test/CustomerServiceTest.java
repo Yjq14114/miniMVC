@@ -42,6 +42,6 @@ public class CustomerServiceTest {
         long id = 1;
         Map<String, Object> fieldMap = new HashMap<>();
         fieldMap.put("contact", "Eric");
-        customerService.updateCustomer(fieldMap);
+        customerService.updateCustomer(1, fieldMap);
     }
 }
