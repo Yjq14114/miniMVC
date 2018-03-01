@@ -1,6 +1,5 @@
 package com.miniMVC.chapter2.helper;
 
-import com.miniMVC.chapter2.model.Customer;
 import com.miniMVC.commons.CollectionUtil;
 import com.miniMVC.commons.PropsUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -11,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

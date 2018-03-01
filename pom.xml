@@ -12,6 +12,8 @@
         <module>chapter1</module>
         <module>chapter2</module>
         <module>commons</module>
+        <module>mini_framework</module>
+        <module>chapter3</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +27,7 @@
         <collections4.version>4.0</collections4.version>
         <dbutils.version>1.6</dbutils.version>
         <dbcp2.version>2.0.1</dbcp2.version>
+        <jackson.version>2.4.4</jackson.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -86,8 +89,34 @@
                 <artifactId>commons-dbcp2</artifactId>
                 <version>${dbcp2.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <!-- 配置远程仓库 -->
     <repositories><!-- 代码库 -->
         <repository>
