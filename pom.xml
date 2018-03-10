@@ -14,6 +14,7 @@
         <module>commons</module>
         <module>mini_framework</module>
         <module>chapter3</module>
+        <module>chapter4</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,6 +29,7 @@
         <dbutils.version>1.6</dbutils.version>
         <dbcp2.version>2.0.1</dbcp2.version>
         <jackson.version>2.4.4</jackson.version>
+        <cglib.version>3.1</cglib.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -93,6 +95,11 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
