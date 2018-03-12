@@ -41,6 +41,10 @@
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
