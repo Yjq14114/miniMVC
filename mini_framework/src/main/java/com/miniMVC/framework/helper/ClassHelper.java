@@ -2,11 +2,10 @@ package com.miniMVC.framework.helper;
 
 import com.miniMVC.framework.ClassUtil;
 import com.miniMVC.framework.ConfigHelper;
-import com.miniMVC.framework.annotation.Action;
 import com.miniMVC.framework.annotation.Controller;
-import com.miniMVC.framework.annotation.Inject;
 import com.miniMVC.framework.annotation.Service;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,15 +14,15 @@ import java.util.Set;
  */
 public final class ClassHelper {
 
-    private static Set<Class<?>> classSet;
+    private static Set<Class<?>> CLASS_SET;
 
     static {
         String basePackage = ConfigHelper.getBasePackage();
-        classSet = ClassUtil.getClassSet(basePackage);
+        CLASS_SET = ClassUtil.getClassSet(basePackage);
     }
 
     public static Set<Class<?>> getClassSet() {
-        return classSet;
+        return CLASS_SET;
     }
 
     /**
@@ -33,7 +32,7 @@ public final class ClassHelper {
     public static Set<Class<?>> getServiceClassSet() {
         Set<Class<?>> classSet = new HashSet<>();
         for (Class<?> cls :
-                classSet) {
+                CLASS_SET) {
             cls.isAnnotationPresent(Service.class);
             classSet.add(cls);
         }
@@ -43,7 +42,7 @@ public final class ClassHelper {
     public static Set<Class<?>> getControllerClassSet() {
         Set<Class<?>> classSet = new HashSet<>();
         for (Class<?> cls :
-                classSet) {
+                CLASS_SET) {
             cls.isAnnotationPresent(Controller.class);
             classSet.add(cls);
         }
@@ -57,23 +56,52 @@ public final class ClassHelper {
         return classSet;
     }
 
+    /**
+     * 获取应用包名下某父类（或接口）的所有子类（或实现）
+     * @param superClass
+     * @return
+     */
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> cls : CLASS_SET) {
+            if (superClass.isAssignableFrom(cls) && !superClass.equals(cls)) {
+                classSet.add(cls);
+            }
+        }
+        return classSet;
+    }
+
+    /**
+     * 获取应用包名下带有某注解的所有类
+     * @param annotationClass
+     * @return
+     */
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> cls : CLASS_SET) {
+            if (annotationClass.isAnnotationPresent(annotationClass)) {
+                classSet.add(cls);
+            }
+        }
+        return classSet;
+    }
 //    public static Set<Class<?>> getInjectClassSet() {
-//        Set<Class<?>> classSet = new HashSet<>();
+//        Set<Class<?>> CLASS_SET = new HashSet<>();
 //        for (Class<?> cls :
-//                classSet) {
+//                CLASS_SET) {
 //            cls.isAnnotationPresent(Inject.class);
-//            classSet.add(cls);
+//            CLASS_SET.add(cls);
 //        }
-//        return classSet;
+//        return CLASS_SET;
 //    }
 //
 //    public static Set<Class<?>> getActionClassSet() {
-//        Set<Class<?>> classSet = new HashSet<>();
+//        Set<Class<?>> CLASS_SET = new HashSet<>();
 //        for (Class<?> cls :
-//                classSet) {
+//                CLASS_SET) {
 //            cls.isAnnotationPresent(Action.class);
-//            classSet.add(cls);
+//            CLASS_SET.add(cls);
 //        }
-//        return classSet;
+//        return CLASS_SET;
 //    }
 }
