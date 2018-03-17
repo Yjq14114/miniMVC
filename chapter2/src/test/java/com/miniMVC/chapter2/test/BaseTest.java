@@ -1,6 +1,6 @@
 package com.miniMVC.chapter2.test;
 
-import com.miniMVC.chapter2.helper.DatabaseHelper;
+import com.miniMVC.framework.helper.DatabaseHelper;
 import org.junit.Before;
 
 import java.io.BufferedReader;

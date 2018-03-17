@@ -1,6 +1,5 @@
 package com.miniMVC.chapter2.test;
 
-import com.miniMVC.chapter2.helper.DatabaseHelper;
 import com.miniMVC.chapter2.model.Customer;
 import com.miniMVC.chapter2.service.CustomerService;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package com.miniMVC.chapter2.helper;
+package com.miniMVC.framework.helper;
 
 import com.miniMVC.commons.CollectionUtil;
 import com.miniMVC.commons.PropsUtil;
@@ -175,6 +175,49 @@ public class DatabaseHelper {
             }
         }
     }
+
+    public static void beginTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.setAutoCommit(false);
+            } catch (SQLException e) {
+                LOGGER.error("transaction error", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_THREAD_LOCAL.set(conn);
+            }
+        }
+    }
+    public static void commitTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.commit();
+                conn.close();
+            } catch (SQLException e) {
+                LOGGER.error("commit transaction error", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_THREAD_LOCAL.remove();
+            }
+        }
+    }
+    public static void rollbackTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.rollback();
+                conn.close();
+            } catch (SQLException e) {
+                LOGGER.error("rollback trancation failure", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_THREAD_LOCAL.remove();
+            }
+        }
+    }
+
 
 //    public static void main(String[] args) {
 //        String tableName = getTableName(Customer.class);

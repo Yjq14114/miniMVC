@@ -6,11 +6,9 @@ package com.miniMvc.thread;
 public class ClientThread extends Thread{
 
     private Sequence sequence;
-
     public ClientThread(Sequence sequence) {
         this.sequence = sequence;
     }
-
     @Override
     public void run() {
         for (int i = 0;i<3;i++) {

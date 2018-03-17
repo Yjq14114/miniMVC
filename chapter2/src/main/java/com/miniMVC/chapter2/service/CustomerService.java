@@ -1,7 +1,7 @@
 package com.miniMVC.chapter2.service;
 
-import com.miniMVC.chapter2.helper.DatabaseHelper;
 import com.miniMVC.chapter2.model.Customer;
+import com.miniMVC.framework.helper.DatabaseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

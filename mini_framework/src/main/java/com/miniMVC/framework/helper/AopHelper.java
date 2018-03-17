@@ -1,9 +1,11 @@
 package com.miniMVC.framework.helper;
 
 import com.miniMVC.framework.annotation.Aspect;
+import com.miniMVC.framework.annotation.Service;
 import com.miniMVC.framework.proxy.AspectProxy;
 import com.miniMVC.framework.proxy.Proxy;
 import com.miniMVC.framework.proxy.ProxyManager;
+import com.miniMVC.framework.proxy.TransactionProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,9 +39,14 @@ public final class AopHelper {
         }
         return targetClassSet;
     }
-
     private static Map<Class<?>, Set<Class<?>>> createProxyMap () throws Exception {
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<>();
+        addAspectProxy(proxyMap);
+        addTransactionProxy(proxyMap);
+        return proxyMap;
+    }
+
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
         for (Class<?> proxyClass :
                 proxyClassSet) {
@@ -49,9 +56,11 @@ public final class AopHelper {
                 proxyMap.put(proxyClass, targetClassSet);
             }
         }
-        return proxyMap;
     }
-
+    private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap) {
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class, serviceClassSet);
+    }
     private static Map<Class<?>, List<Proxy>> createTargetMap(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
         Map<Class<?>, List<Proxy>> targetMap = new HashMap<>();
         for (Map.Entry<Class<?>, Set<Class<?>>> proxyEntry: proxyMap.entrySet()){
