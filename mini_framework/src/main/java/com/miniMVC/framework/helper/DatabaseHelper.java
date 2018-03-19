@@ -29,7 +29,7 @@ public class DatabaseHelper {
     private static final ThreadLocal<Connection> CONNECTION_THREAD_LOCAL = new ThreadLocal<>();
     private static final BasicDataSource DATA_SOURCE;
     static {
-        Properties conf = PropsUtil.loadProps("config.properties");
+        Properties conf = PropsUtil.loadProps("mini.properties");
 //        DRIVER = conf.getProperty("jdbc.driver");
 //        URL = conf.getProperty("jdbc.url");
 //        USERNAME = conf.getProperty("jdbc.username");

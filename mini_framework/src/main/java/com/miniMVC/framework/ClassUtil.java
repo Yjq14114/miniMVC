@@ -7,10 +7,13 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Created by yjq14 on 2018/3/1.
@@ -52,12 +55,30 @@ public final class ClassUtil {
                 if (url != null) {
                     String protocol = url.getProtocol();
                     if (protocol.equals("file")) {
-                        String s = url.getPath().replaceAll("%20", "");
+                        String packagePath = url.getPath().replaceAll("%20", "");
+                        addClass(classSet, packagePath, packageName);
+                    } else if (protocol.equals("jar")) {
+                        JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
+                        if (jarURLConnection != null) {
+                            JarFile jarFile = jarURLConnection.getJarFile();
+                            if (jarFile != null) {
+                                Enumeration<JarEntry> jarEntries = jarFile.entries();
+                                while (jarEntries.hasMoreElements()) {
+                                    JarEntry jarEntry = jarEntries.nextElement();
+                                    String jarEntryName = jarEntry.getName();
+                                    if (jarEntryName.endsWith(".class")) {
+                                        String className = jarEntryName.substring(0, jarEntryName.lastIndexOf(".")).replaceAll("/", ".");
+                                        doAddClass(classSet, className);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("getClassSet error", e);
+            throw new RuntimeException(e);
         }
         return classSet;
     }
@@ -86,8 +107,20 @@ public final class ClassUtil {
     }
 
     private static void doAddClass(Set<Class<?>> classSet, String className) {
-        Class<?> aClass = loadClass(className, false);
+        Class<?> aClass = null;
+        try {
+            aClass = loadClass(className, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         classSet.add(aClass);
+    }
+
+    public static void main(String[] args) {
+        Set<Class<?>> classSet = new HashSet<>();
+        String className = "com.miniMVC.chapter3.ChapterController.class";
+        ClassUtil.doAddClass(classSet, className);
+        System.out.println("success");
     }
 
 }
