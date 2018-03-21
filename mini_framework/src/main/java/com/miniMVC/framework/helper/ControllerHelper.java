@@ -29,7 +29,7 @@ public class ControllerHelper {
                         if (method.isAnnotationPresent(Action.class)) {
                             Action action = method.getAnnotation(Action.class);
                             String mapping = action.value();
-                            if (mapping.matches("\\w+:/\\w")) {
+                            if (mapping.matches("\\w+:/\\w*")) {
                                 String[] array = mapping.split(":");
                                 if (ArrayUtils.isNotEmpty(array) && array.length == 2) {
                                     String requestMethod = array[0];
@@ -45,6 +45,8 @@ public class ControllerHelper {
             }
         }
     }
+
+
 
     public static Handler getHandler(String requestMethod, String requestPath) {
         Request request = new Request(requestMethod, requestPath);

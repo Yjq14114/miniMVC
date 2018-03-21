@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
@@ -38,6 +37,7 @@ public final class ClassUtil {
     public static Class<?> loadClass(String className, boolean isInitialized) {
         Class<?> cls;
         try {
+            LOGGER.info("loadClass {}", className);
             cls = Class.forName(className, isInitialized, getClassLoader());
         } catch (ClassNotFoundException e) {
             LOGGER.error("load class failure", e);
@@ -85,19 +85,19 @@ public final class ClassUtil {
     private static void addClass(Set<Class<?>> classSet, String packagePath, String packageName) {
         File[] files = new File(packagePath).listFiles(file -> (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory());
         for (File file: files) {
-            String name = file.getName();
+            String fileName = file.getName();
             if (file.isFile()) {
-                name.substring(0, name.lastIndexOf("."));
+                String className = fileName.substring(0, fileName.lastIndexOf("."));
                 if (StringUtil.isNotEmpty(packageName)) {
-                    name = packageName + "." + name;
+                    className = packageName + "." + className;
                 }
-                doAddClass(classSet, name);
+                doAddClass(classSet, className);
             } else {
-                String subPackagePath = name;
+                String subPackagePath = fileName;
                 if (StringUtil.isNotEmpty(packagePath)) {
                     subPackagePath = packagePath + "/" + subPackagePath;
                 }
-                String subPackageName = name;
+                String subPackageName = fileName;
                 if (StringUtil.isNotEmpty(packageName)) {
                     subPackageName = packageName + "." + subPackageName;
                 }
@@ -116,11 +116,12 @@ public final class ClassUtil {
         classSet.add(aClass);
     }
 
-    public static void main(String[] args) {
-        Set<Class<?>> classSet = new HashSet<>();
-        String className = "com.miniMVC.chapter3.ChapterController.class";
-        ClassUtil.doAddClass(classSet, className);
-        System.out.println("success");
-    }
+//    public static void main(String[] args) throws ClassNotFoundException {
+//        Set<Class<?>> classSet = new HashSet<>();
+//        String className = "com.miniMVC.framework.ClassUtil";
+//        Class<?> aClass = Class.forName(className);
+//        ClassUtil.doAddClass(classSet, className);
+//        System.out.println("success");
+//    }
 
 }

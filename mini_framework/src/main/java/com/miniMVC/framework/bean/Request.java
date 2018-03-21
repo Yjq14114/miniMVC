@@ -1,5 +1,8 @@
 package com.miniMVC.framework.bean;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Created by yjq14 on 2018/3/4.
  */
@@ -30,11 +33,11 @@ public class Request {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 }
