@@ -1,7 +1,6 @@
 package com.miniMVC.framework.bean;
 
 import com.miniMVC.commons.CastUtil;
-import com.miniMVC.framework.ClassUtil;
 
 import java.util.Map;
 
@@ -17,7 +16,7 @@ public class Param {
     public long getLong(String name) {
         return CastUtil.castLong(paramMap.get(name));
     }
-    private Map<String, Object> getMap(){
+    public Map<String, Object> getMap(){
         return paramMap;
     }
 }

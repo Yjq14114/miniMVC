@@ -14,17 +14,16 @@ import java.lang.reflect.Method;
 public final class ReflectionUtil {
     private final static Logger LOGGER = LoggerFactory.getLogger(ReflectionUtil.class);
 
-    public static Object newInstance(Class<?> cls) {
-        Object instance = null;
-        try {
-            instance = cls.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            LOGGER.error("new instance error", e);
-            new RuntimeException(e);
-        }
-        return instance;
+    public static Object newInstance(Class<?> cls) throws IllegalAccessException, InstantiationException {
+        //        try {
+//            instance = cls.newInstance();
+//        } catch (InstantiationException | IllegalAccessException e) {
+//            LOGGER.error("new instance error", e);
+//            new RuntimeException(e);
+//        }
+        return  cls.newInstance();
     }
-    public static Object invokeMethod(Object obj, Method method, Object ... args) {
+    public static Object invokeMethod(Object obj, Method method, Class<?>  clazz, Object ... args) {
         Object result = null;
         try {
             method.setAccessible(true);
