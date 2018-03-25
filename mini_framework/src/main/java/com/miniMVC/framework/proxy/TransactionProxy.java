@@ -14,12 +14,7 @@ public class TransactionProxy implements Proxy{
 
     private final static Logger log = LoggerFactory.getLogger(TransactionProxy.class);
 
-    private static final ThreadLocal<Boolean> FLAG_HOLDER = new ThreadLocal<Boolean>() {
-        @Override
-        protected Boolean initialValue() {
-            return false;
-        }
-    };
+    private static final ThreadLocal<Boolean> FLAG_HOLDER = ThreadLocal.withInitial(() -> false);
 
     @Override
     public Object doProxy(ProxyChain proxyChain) throws Throwable {

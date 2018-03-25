@@ -36,7 +36,6 @@ public class InvokeObj {
             if (method.getName().equals("intShow")) {
                 System.out.println(method.getName());
                 System.out.println(method.getParameterTypes());
-                Class<?>[] parameterTypes = method.getParameterTypes();
                 Method declaredMethod = clazz.getDeclaredMethod(method.getName(), method.getParameterTypes());
                 Object invoke = declaredMethod.invoke(new InvokeObj(), 9);
                 System.out.println(invoke);

@@ -23,7 +23,10 @@ public final class ReflectionUtil {
 //        }
         return  cls.newInstance();
     }
-    public static Object invokeMethod(Object obj, Method method, Class<?>  clazz, Object ... args) {
+    public static Object invokeMethod(Object obj, Method method) {
+        return invokeMethod(obj, method, null);
+    }
+    public static Object invokeMethod(Object obj, Method method, Object ... args) {
         Object result = null;
         try {
             method.setAccessible(true);

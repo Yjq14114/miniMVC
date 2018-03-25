@@ -6,6 +6,7 @@ import com.miniMVC.framework.annotation.Controller;
 import com.miniMVC.framework.annotation.Inject;
 import com.miniMVC.framework.bean.Data;
 import com.miniMVC.framework.bean.Param;
+import com.miniMVC.framework.bean.View;
 
 /**
  * Created by yjq14 on 2018/3/18.
@@ -28,11 +29,10 @@ public class TestController {
         return data;
     }
 
-//    public static void main(String[] args) {
-//        try {
-//            Class<?> aClass = Class.forName("com.miniMVC.chapter3.controller.TestController");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Action("get:/testView")
+    public View testView() {
+        View view = new View("hello.jsp");
+        view.addModel("name", "michael");
+        return view;
+    }
 }

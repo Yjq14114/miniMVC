@@ -79,9 +79,9 @@ public class DispatcherServlet extends HttpServlet{
             Object result;
             Method actionMethod = handler.getActionMethod();
             if (param.getMap().size() == 0) {
-                 result = ReflectionUtil.invokeMethod(bean, actionMethod, controllerClass, null);
+                 result = ReflectionUtil.invokeMethod(bean, actionMethod);
             } else {
-                result = ReflectionUtil.invokeMethod(bean, actionMethod, controllerClass, param);
+                result = ReflectionUtil.invokeMethod(bean, actionMethod, param);
             }
             if (result instanceof View) {
                 View view = (View) result;
@@ -96,7 +96,6 @@ public class DispatcherServlet extends HttpServlet{
                             req.setAttribute(entry.getKey(), entry.getValue());
                         }
                         req.getRequestDispatcher(ConfigHelper.getJspPath() + path).forward(req, resp);
-
                     }
                 }
             } else if (result instanceof Data) {

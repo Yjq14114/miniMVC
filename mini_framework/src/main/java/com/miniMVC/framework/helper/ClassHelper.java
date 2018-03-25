@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public final class ClassHelper {
 
-    private static Set<Class<?>> CLASS_SET;
+    private static final Set<Class<?>> CLASS_SET;
 
     static {
         String basePackage = ConfigHelper.getBasePackage();
@@ -79,7 +79,7 @@ public final class ClassHelper {
     public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
         Set<Class<?>> classSet = new HashSet<>();
         for (Class<?> cls : CLASS_SET) {
-            if (annotationClass.isAnnotationPresent(annotationClass)) {
+            if (cls.isAnnotationPresent(annotationClass)) {
                 classSet.add(cls);
             }
         }
