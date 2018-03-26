@@ -1,6 +1,7 @@
 package com.miniMVC.framework.bean;
 
 import com.miniMVC.commons.CastUtil;
+import com.miniMVC.commons.CollectionUtil;
 
 import java.util.Map;
 
@@ -18,5 +19,8 @@ public class Param {
     }
     public Map<String, Object> getMap(){
         return paramMap;
+    }
+    public boolean isEmpty() {
+        return CollectionUtil.isEmpty(paramMap);
     }
 }

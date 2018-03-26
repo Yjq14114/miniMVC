@@ -3,13 +3,8 @@ package com.miniMVC.chapter2.test;
 import com.miniMVC.chapter2.model.Customer;
 import com.miniMVC.chapter2.service.CustomerService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

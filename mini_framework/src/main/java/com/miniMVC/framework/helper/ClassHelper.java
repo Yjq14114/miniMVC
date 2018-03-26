@@ -33,8 +33,9 @@ public final class ClassHelper {
         Set<Class<?>> classSet = new HashSet<>();
         for (Class<?> cls :
                 CLASS_SET) {
-            cls.isAnnotationPresent(Service.class);
-            classSet.add(cls);
+            if(cls.isAnnotationPresent(Service.class)) {
+                classSet.add(cls);
+            }
         }
         return classSet;
     }
@@ -43,8 +44,8 @@ public final class ClassHelper {
         Set<Class<?>> classSet = new HashSet<>();
         for (Class<?> cls :
                 CLASS_SET) {
-            cls.isAnnotationPresent(Controller.class);
-            classSet.add(cls);
+            if (cls.isAnnotationPresent(Controller.class))
+                classSet.add(cls);
         }
         return classSet;
     }

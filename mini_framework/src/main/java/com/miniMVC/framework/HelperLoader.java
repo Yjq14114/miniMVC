@@ -10,9 +10,9 @@ public class HelperLoader {
         Class<?> [] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                AopHelper.class,
                 IocHelper.class,
-                ControllerHelper.class,
-                AopHelper.class
+                ControllerHelper.class
         };
         for (Class<?> cls :
                 classList) {

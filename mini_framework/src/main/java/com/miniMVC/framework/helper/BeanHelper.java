@@ -16,12 +16,7 @@ public final class BeanHelper {
         Set<Class<?>> beanClassSet = ClassHelper.getBeanClassSet();
         for (Class<?> beanClass :
                 beanClassSet) {
-            Object obj = null;
-            try {
-                obj = ReflectionUtil.newInstance(beanClass);
-            } catch (IllegalAccessException | InstantiationException e) {
-                e.printStackTrace();
-            }
+            Object obj = ReflectionUtil.newInstance(beanClass);
             BEAN_MAP.put(beanClass, obj);
         }
     }
