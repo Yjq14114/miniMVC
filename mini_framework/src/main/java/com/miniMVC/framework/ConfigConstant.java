@@ -12,4 +12,5 @@ public interface ConfigConstant {
     String APP_BASE_PACKAGE = "mini.framework.app.base_package";
     String APP_JSP_PATH = "mini.framework.app.jsp_path";
     String APP_ASSERT_PATH = "mini.framework.app.assert_path";
+    String APP_UPLOAD_LIMIT = "mini.framework.app.upload_limit";
 }

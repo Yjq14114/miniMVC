@@ -10,6 +10,7 @@ import com.miniMVC.framework.bean.Param;
 import com.miniMVC.framework.bean.View;
 import com.miniMVC.framework.helper.BeanHelper;
 import com.miniMVC.framework.helper.ControllerHelper;
+import com.miniMVC.framework.helper.UploadHelper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -43,12 +44,16 @@ public class DispatcherServlet extends HttpServlet{
         jspServlet.addMapping(ConfigHelper.getJspPath() + "*");
         ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
         defaultServlet.addMapping(ConfigHelper.getAssertPath() + "*");
+        UploadHelper.init(servletContext);
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestMethod = req.getMethod().toLowerCase();
         String requestPath = req.getPathInfo();
+        if (requestPath.equals("/favicon.ico")) {
+            return;
+        }
         Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
         if (handler != null) {
             Class<?> controllerClass = handler.getControllerClass();

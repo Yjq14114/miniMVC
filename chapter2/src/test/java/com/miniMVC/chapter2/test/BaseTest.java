@@ -2,6 +2,7 @@ package com.miniMVC.chapter2.test;
 
 import com.miniMVC.framework.helper.DatabaseHelper;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.io.InputStreamReader;
 /**
  * Created by yjq14 on 2018/3/1.
  */
-public  class BaseTest {
+public class BaseTest {
     private String sqlFile;
 
     public BaseTest(String sqlFile) {
@@ -31,4 +32,6 @@ public  class BaseTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void test() {}
 }

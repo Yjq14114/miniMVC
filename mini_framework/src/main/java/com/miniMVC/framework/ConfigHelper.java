@@ -40,4 +40,7 @@ public final class ConfigHelper {
     public static String getAssertPath() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_ASSERT_PATH);
     }
+    public static int getAppUploadLimit() {
+        return PropsUtil.getInt(CONFIG_PROPS, ConfigConstant.APP_UPLOAD_LIMIT);
+    }
 }
