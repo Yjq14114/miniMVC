@@ -62,7 +62,6 @@ public final class UploadHelper {
                                 formParamList.add(new FormParam(fieldName, fieldValue));
                             } else {
                                 String fileName = FileUtil.getRealFileName(new String(item.getName().getBytes(), "UTF-8"));
-                            
                                 if (StringUtil.isNotEmpty(fieldName)) {
                                     long size = item.getSize();
                                     String contentType = item.getContentType();

@@ -1,14 +1,18 @@
 package com.miniMVC.framework.helper;
 
+import com.miniMVC.commons.CharacterUtil;
 import com.miniMVC.commons.CodecUtil;
 import com.miniMVC.commons.StreamUtil;
 import com.miniMVC.commons.StringUtil;
 import com.miniMVC.framework.bean.FormParam;
 import com.miniMVC.framework.bean.Param;
 import org.apache.commons.lang3.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -17,6 +21,7 @@ import java.util.List;
  * Created by yjq14 on 2018/4/1.
  */
 public final class RequestHelper {
+    private final static Logger logger = LoggerFactory.getLogger(RequestHelper.class);
     public static Param createParam(HttpServletRequest request) throws IOException {
         List<FormParam> formParamList = new ArrayList<>();
         formParamList.addAll(parseParameterNames(request));
@@ -24,7 +29,7 @@ public final class RequestHelper {
         return new Param(formParamList);
     }
 
-    private static List<FormParam> parseParameterNames(HttpServletRequest request) {
+    private static List<FormParam> parseParameterNames(HttpServletRequest request) throws UnsupportedEncodingException {
         List<FormParam> formParamList = new ArrayList<>();
         Enumeration<String> paramNames = request.getParameterNames();
         while (paramNames.hasMoreElements()) {
@@ -33,7 +38,7 @@ public final class RequestHelper {
             if (ArrayUtils.isNotEmpty(fieldValues)) {
                 Object fieldValue;
                 if (fieldValues.length == 1) {
-                    fieldValue = fieldValues[0];
+                    fieldValue = CharacterUtil.toChinese(fieldValues[0]);
                 } else {
                     StringBuilder sb = new StringBuilder("");
                     for (int i = 0; i < fieldValues.length; i++) {
@@ -42,7 +47,7 @@ public final class RequestHelper {
                             sb.append(StringUtil.SEPARATOR);
                         }
                     }
-                    fieldValue = sb.toString();
+                    fieldValue = CharacterUtil.toChinese(sb.toString());
                 }
                 formParamList.add(new FormParam(fieldName, fieldValue));
             }

@@ -2,6 +2,7 @@ package com.miniMVC.framework.helper;
 
 import com.miniMVC.commons.CollectionUtil;
 import com.miniMVC.commons.PropsUtil;
+import com.miniMVC.framework.ConfigHelper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -21,33 +22,19 @@ import java.util.Properties;
  */
 public class DatabaseHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseHelper.class);
-//    private static final String DRIVER;
-//    private static final String URL;
-//    private static final String USERNAME;
-//    private static final String PASSWORD;
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
     private static final ThreadLocal<Connection> CONNECTION_THREAD_LOCAL = new ThreadLocal<>();
     private static final BasicDataSource DATA_SOURCE;
     static {
-        Properties conf = PropsUtil.loadProps("mini.properties");
-//        DRIVER = conf.getProperty("jdbc.driver");
-//        URL = conf.getProperty("jdbc.url");
-//        USERNAME = conf.getProperty("jdbc.username");
-//        PASSWORD = conf.getProperty("jdbc.password");
-        String driver = conf.getProperty("jdbc.driver");
-        String url = conf.getProperty("jdbc.url");
-        String userName = conf.getProperty("jdbc.username");
-        String password = conf.getProperty("jdbc.password");
+        String driver = ConfigHelper.getJdbcDriver();
+        String url = ConfigHelper.getJdbcUrl();
+        String userName = ConfigHelper.getJdbcUsername();
+        String password = ConfigHelper.getJdbcPassword();
         DATA_SOURCE = new BasicDataSource();
         DATA_SOURCE.setDriverClassName(driver);
         DATA_SOURCE.setUrl(url);
         DATA_SOURCE.setUsername(userName);
         DATA_SOURCE.setPassword(password);
-//        try {
-//            Class.forName(DRIVER);
-//        } catch (ClassNotFoundException e) {
-//            LOGGER.error("can not load jdbc driver", e);
-//        }
     }
     public static <T>List<T> queryEntityList(Class<T> entityClass, String sql, Object... params) {
         List<T> entityList;
@@ -217,10 +204,4 @@ public class DatabaseHelper {
             }
         }
     }
-
-
-//    public static void main(String[] args) {
-//        String tableName = getTableName(Customer.class);
-//        System.out.println(tableName);
-//    }
 }

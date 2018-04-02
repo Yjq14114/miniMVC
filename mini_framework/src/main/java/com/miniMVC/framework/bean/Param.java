@@ -1,6 +1,7 @@
 package com.miniMVC.framework.bean;
 
 import com.miniMVC.commons.CastUtil;
+import com.miniMVC.commons.CodecUtil;
 import com.miniMVC.commons.CollectionUtil;
 import com.miniMVC.commons.StringUtil;
 
@@ -36,7 +37,7 @@ public class Param {
         return paramMap;
     }
     public boolean isEmpty() {
-        return CollectionUtil.isEmpty(paramMap);
+        return CollectionUtil.isEmpty(formParamList) && CollectionUtil.isEmpty(fileParamList);
     }
 
     /**
