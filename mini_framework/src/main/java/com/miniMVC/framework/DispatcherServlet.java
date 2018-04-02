@@ -6,10 +6,7 @@ import com.miniMVC.framework.bean.Data;
 import com.miniMVC.framework.bean.Handler;
 import com.miniMVC.framework.bean.Param;
 import com.miniMVC.framework.bean.View;
-import com.miniMVC.framework.helper.BeanHelper;
-import com.miniMVC.framework.helper.ControllerHelper;
-import com.miniMVC.framework.helper.RequestHelper;
-import com.miniMVC.framework.helper.UploadHelper;
+import com.miniMVC.framework.helper.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -44,6 +41,7 @@ public class DispatcherServlet extends HttpServlet{
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletHelper.init(req, resp);
         String requestMethod = req.getMethod().toLowerCase();
         String requestPath = req.getPathInfo();
         if (requestPath.equals("/favicon.ico")) {

@@ -9,6 +9,7 @@ import com.miniMVC.framework.annotation.Inject;
 import com.miniMVC.framework.bean.Data;
 import com.miniMVC.framework.bean.FileParam;
 import com.miniMVC.framework.bean.Param;
+import com.miniMVC.framework.helper.ServletHelper;
 import com.miniMVC.framework.helper.UploadHelper;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class CustomerController {
 
     @Action("get:/customerList")
     public Data customerList() {
+        javax.servlet.http.HttpServletRequest request = ServletHelper.getRequest();
         List<Customer> customerList = customerService.getCustomerList();
         Data data = new Data();
         data.setModel(new Gson().toJson(customerList));

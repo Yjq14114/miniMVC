@@ -48,6 +48,9 @@ public final class UploadHelper {
     }
     public static boolean isMultipartFormData(HttpServletRequest request) {
         String contentType = request.getContentType();
+        if (StringUtil.isEmpty(contentType)) {
+            return false;
+        }
         return ServletFileUpload.isMultipartContent(request) || contentType.equalsIgnoreCase(ServletFileUpload.MULTIPART_FORM_DATA);
     }
     public static Param createParam(HttpServletRequest  request) {
