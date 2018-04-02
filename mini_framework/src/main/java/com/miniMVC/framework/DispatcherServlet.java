@@ -54,7 +54,7 @@ public class DispatcherServlet extends HttpServlet{
             Class<?> controllerClass = handler.getControllerClass();
             Object bean = BeanHelper.getBean(controllerClass);
             Param param;
-            if (UploadHelper.isMultipart(req)) {
+            if (UploadHelper.isMultipartFormData(req)) {
                 param = UploadHelper.createParam(req);
             } else {
                 param = RequestHelper.createParam(req);

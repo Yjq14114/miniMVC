@@ -7,7 +7,9 @@ import com.miniMVC.framework.annotation.Action;
 import com.miniMVC.framework.annotation.Controller;
 import com.miniMVC.framework.annotation.Inject;
 import com.miniMVC.framework.bean.Data;
+import com.miniMVC.framework.bean.FileParam;
 import com.miniMVC.framework.bean.Param;
+import com.miniMVC.framework.helper.UploadHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +33,8 @@ public class CustomerController {
     @Action("post:/createCustomer")
     public Data createCustomer(Param param) {
         Data data = new Data();
+        FileParam file = param.getFile("file");
+        UploadHelper.uploadFile("/home/files/", file);
         Map<String, Object> fieldMap = param.getFieldMap();
         boolean customer = customerService.createCustomer(fieldMap);
         if (customer) {
