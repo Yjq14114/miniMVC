@@ -24,6 +24,10 @@ public final class ReflectionUtil {
         }
         return  instance;
     }
+    public static Object newInstance(String className) {
+        Class<?> aClass = ClassUtil.loadClass(className);
+        return newInstance(aClass);
+    }
     public static Object invokeMethod(Object obj, Method method) {
         return invokeMethod(obj, method, null);
     }

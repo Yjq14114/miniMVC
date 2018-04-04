@@ -62,6 +62,9 @@ public class PropsUtil {
         }
         return value;
     }
+    public static boolean getBoolean(Properties props, String key) {
+        return getBoolean(props, key, false);
+    }
     public static boolean getBoolean(Properties props, String key, Boolean defaultValue) {
         boolean value = defaultValue;
         if (props.containsKey(key)) {
