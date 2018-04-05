@@ -47,7 +47,9 @@ public class DatabaseHelper {
         }
         return entityList;
     }
-
+    public static BasicDataSource getDataSource() {
+        return DATA_SOURCE;
+    }
     /**
      * 通用的查询方法
      * @param sql
