@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    <description>Security JSP Tag</description>
+    <tlib-version>1.1</tlib-version>
+    <short-name>security</short-name>
+    <uri>/security</uri>
+
+    <tag>
+        <description>判断当前用户是否已经登录（包括：已认证与以记住）</description>
+        <name>user</name>
+        <tag-class>org.apache.shiro.web.tags.UserTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    <tag>
+        <description>判断当前用户是否未登录（包括：未认证或为记住，即访客身份）</description>
+        <name>guest</name>
+        <tag-class>org.apache.shiro.web.tags.GuestTag</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    <tag>
+        <description>判断当前用户是否拥有其中所有的角色（逗号分隔，表示与的关系）</description>
+        <name>hasAllRoles</name>
+        <tag-class>com.miniMVC.plugin.security.tags.HasAllRolesTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>判断当前用户是否拥有其中所有权限</description>
+        <name>hasAllPermission</name>
+        <tag-class>com.miniMVC.plugin.security.tags.HasAllPermissionsTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>判断当前用户是否拥有其中任一权限</description>
+        <name>hasAnyPermission</name>
+        <tag-class>com.miniMVC.plugin.security.tags.HasAnyPermissionsTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
