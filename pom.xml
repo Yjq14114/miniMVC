@@ -17,6 +17,8 @@
         <module>chapter4</module>
         <module>chapter5</module>
         <module>mini_plugin_security</module>
+        <module>mini_plugin_soap</module>
+        <module>mini_plugin_rest</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,6 +39,8 @@
         <gson.verisoin>2.8.2</gson.verisoin>
         <shiro.version>1.2.3</shiro.version>
         <codec.version>1.10</codec.version>
+        <cxf.version>3.0.4</cxf.version>
+        <fasterxml.version>2.5.2</fasterxml.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -142,6 +146,36 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>${codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-extension-providers</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-security-cors</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-client</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>${fasterxml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
