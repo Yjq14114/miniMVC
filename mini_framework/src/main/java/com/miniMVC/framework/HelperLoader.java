@@ -8,6 +8,7 @@ import com.miniMVC.framework.helper.*;
 public class HelperLoader {
     public static void init() {
         Class<?> [] classList = {
+                BannerHelper.class,
                 ClassHelper.class,
                 BeanHelper.class,
                 AopHelper.class,

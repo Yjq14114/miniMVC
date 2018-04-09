@@ -1,7 +1,6 @@
 package com.miniMVC.framework.helper;
 
 import com.miniMVC.commons.CollectionUtil;
-import com.miniMVC.commons.PropsUtil;
 import com.miniMVC.framework.ConfigHelper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
@@ -15,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * Created by yjq14 on 2018/2/27
@@ -44,8 +42,20 @@ public class DatabaseHelper {
         } catch (SQLException e) {
             LOGGER.error("query entity list failure", e);
             throw new RuntimeException(e);
+        } finally {
+            closeConnection();
         }
         return entityList;
+    }
+    public static List<Map<String,Object>> mapListHandler(String sql,Object... params) {
+        List<Map<String, Object>> query = new ArrayList<>();
+        Connection conn = getConnection();
+        try {
+            query = QUERY_RUNNER.query(conn, sql, new MapListHandler(), params);
+        } catch (SQLException e) {
+            LOGGER.error("query map list failure", e);
+        }
+        return query;
     }
     public static BasicDataSource getDataSource() {
         return DATA_SOURCE;

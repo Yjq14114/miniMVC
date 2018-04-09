@@ -11,6 +11,21 @@
 
     <artifactId>mini_plugin_security</artifactId>
     <dependencies>
+         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.miniMVC</groupId>
             <artifactId>mini_framework</artifactId>
