@@ -12,6 +12,7 @@ import com.miniMVC.framework.bean.Param;
 import com.miniMVC.framework.helper.ServletHelper;
 import com.miniMVC.framework.helper.UploadHelper;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class CustomerController {
 
     @Action("get:/customerList")
     public Data customerList() {
-        javax.servlet.http.HttpServletRequest request = ServletHelper.getRequest();
+        HttpServletRequest request = ServletHelper.getRequest();
         List<Customer> customerList = customerService.getCustomerList();
         Data data = new Data();
         data.setModel(new Gson().toJson(customerList));

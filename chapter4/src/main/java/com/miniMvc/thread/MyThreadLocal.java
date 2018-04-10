@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 自定义实现一个threadLocal
  * Created by yjq14 on 2018/3/16.
  */
 public class MyThreadLocal <T>{
