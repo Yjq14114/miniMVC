@@ -6,6 +6,6 @@ package com.miniMVC.soap;
 public interface SoapConstant {
 
     String SERVLET_URL = "/soap/*";
-    String LOG = "smart.plugin.soap.log";
+    String LOG = "mini.plugin.soap.log";
 
 }
