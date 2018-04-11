@@ -12,7 +12,6 @@ import org.apache.cxf.jaxrs.provider.jsonp.JsonpInInterceptor;
 import org.apache.cxf.jaxrs.provider.jsonp.JsonpPostStreamInterceptor;
 import org.apache.cxf.jaxrs.provider.jsonp.JsonpPreStreamInterceptor;
 import org.apache.cxf.message.Message;
-import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter;
 
 import java.util.ArrayList;
