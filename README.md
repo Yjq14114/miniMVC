@@ -1,6 +1,5 @@
-<img src = "mini.png" height="100" width="100" />
-one java web framework
 
+<img src = "mini.png" height="100" width="100" /> 
 
 ##
 mini framework 是一款模仿spring开发的web框架
