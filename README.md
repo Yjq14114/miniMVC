@@ -1,4 +1,4 @@
- <img src = "mini.png">
+<img src = "mini.png" height="200" width="200" />
 one java web framework
 
 
