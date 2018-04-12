@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by yjq14 on 2018/4/9.
@@ -119,6 +120,10 @@ public class TestBossData {
         exportSql();
 //        writeFile();
     }
-
-
+    @Test
+    public void listSystemInfo() {
+        Properties properties = System.getProperties();
+        properties.list(System.out);
+        System.out.println(Runtime.getRuntime().availableProcessors());
+    }
 }

@@ -14,16 +14,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by yjq14 on 2018/2/27
  */
-public class DatabaseHelper {
+public final class DatabaseHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseHelper.class);
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
-    private static final ThreadLocal<Connection> CONNECTION_THREAD_LOCAL = new ThreadLocal<>();
+    private static final ThreadLocal<Connection> CONNECTION_THREAD_LOCAL;
     private static final BasicDataSource DATA_SOURCE;
     static {
+        CONNECTION_THREAD_LOCAL = new ThreadLocal<>();
         String driver = ConfigHelper.getJdbcDriver();
         String url = ConfigHelper.getJdbcUrl();
         String userName = ConfigHelper.getJdbcUsername();
@@ -33,6 +35,10 @@ public class DatabaseHelper {
         DATA_SOURCE.setUrl(url);
         DATA_SOURCE.setUsername(userName);
         DATA_SOURCE.setPassword(password);
+        DATA_SOURCE.setInitialSize(5);
+        DATA_SOURCE.setMaxIdle(100);
+        DATA_SOURCE.setMinIdle(10);
+        DATA_SOURCE.setMaxTotal(-1);
     }
     public static <T>List<T> queryEntityList(Class<T> entityClass, String sql, Object... params) {
         List<T> entityList;
@@ -42,8 +48,6 @@ public class DatabaseHelper {
         } catch (SQLException e) {
             LOGGER.error("query entity list failure", e);
             throw new RuntimeException(e);
-        } finally {
-            closeConnection();
         }
         return entityList;
     }
@@ -160,7 +164,7 @@ public class DatabaseHelper {
         }
         return conn;
     }
-    @Deprecated
+
     public static void closeConnection() {
         Connection conn = CONNECTION_THREAD_LOCAL.get();
         if (conn != null) {
@@ -216,4 +220,6 @@ public class DatabaseHelper {
             }
         }
     }
+
+
 }
