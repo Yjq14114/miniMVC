@@ -1,4 +1,4 @@
-# miniMVC
+ <img src = "mini.png">
 one java web framework
 
 
