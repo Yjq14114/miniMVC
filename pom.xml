@@ -41,6 +41,8 @@
         <codec.version>1.10</codec.version>
         <cxf.version>3.0.4</cxf.version>
         <fasterxml.version>2.5.2</fasterxml.version>
+        <ojdbc.version>11.2.0.4.0-atlassian-hosted</ojdbc.version>
+        <snake.yml.version>1.20-SNAPSHOT</snake.yml.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -177,7 +179,17 @@
             <dependency>
                 <groupId>com.oracle</groupId>
                 <artifactId>ojdbc6</artifactId>
-                <version>11.2.0.4.0-atlassian-hosted</version>
+                <version>${ojdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javaee</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snake.yml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

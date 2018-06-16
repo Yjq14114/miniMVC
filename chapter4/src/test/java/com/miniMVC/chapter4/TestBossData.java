@@ -39,7 +39,7 @@ public class TestBossData {
         }
     }
     public Boss_coupon_status getBossStatus(String tradeNo) {
-        String sql = "SELECT * FROM BOSS_COUPON_STATUS WHERE trade_no = "+tradeNo+" and status != 2";
+        String sql = "SELECT * FROM BOSS_COUPON_STATUS WHERE trade_no = "+tradeNo+"";
         return DatabaseHelper.queryEntityList(Boss_coupon_status.class, sql).get(0);
     }
 
@@ -52,6 +52,7 @@ public class TestBossData {
                 Boss_coupon_status bossStatus = getBossStatus(tradeNo);
                 System.out.println(bossStatus.toString());
                 writeFile(bossStatus);
+//                deleFile(tradeNo);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -86,6 +87,15 @@ public class TestBossData {
         String s = sql + str;
         try {
             output.write(s);
+            output.write("\r\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleFile(String trano) {
+        String sql = "DELETE from  BOSS_COUPON_STATUS where TRADE_NO = '"+trano+"',and STATUS = 2;";
+        try {
+            output.write(sql);
             output.write("\r\n");
         } catch (IOException e) {
             e.printStackTrace();

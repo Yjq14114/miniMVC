@@ -119,12 +119,4 @@ public final class ClassUtil {
         classSet.add(aClass);
     }
 
-//    public static void main(String[] args) throws ClassNotFoundException {
-//        Set<Class<?>> classSet = new HashSet<>();
-//        String className = "com.miniMVC.framework.ClassUtil";
-//        Class<?> aClass = Class.forName(className);
-//        ClassUtil.doAddClass(classSet, className);
-//        System.out.println("success");
-//    }
-
 }
