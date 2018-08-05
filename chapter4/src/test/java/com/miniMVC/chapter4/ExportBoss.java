@@ -60,4 +60,10 @@ public class ExportBoss {
             e.printStackTrace();
         }
     }
+    @Test
+    public void testQueryBoss() {
+        String sql = "SELECT * FROM \"ERKUAI\".\"BOSS_COUPON\" where \"ID\" = 1278";
+        List<BossCouponEntity> boss = DatabaseHelper.queryEntityList(BossCouponEntity.class, sql);
+        boss.forEach(BossCouponEntity::getBatchNo);
+    }
 }
