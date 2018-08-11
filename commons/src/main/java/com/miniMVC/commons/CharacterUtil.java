@@ -13,10 +13,7 @@ public class CharacterUtil {
      */
     public static boolean isChineseByScript(char c) {
         Character.UnicodeScript sc = Character.UnicodeScript.of(c);
-        if (sc == Character.UnicodeScript.HAN) {
-            return true;
-        }
-        return false;
+        return sc == Character.UnicodeScript.HAN;
     }
     public static boolean isChineseByStr(String str) {
         char[] chars = str.toCharArray();
