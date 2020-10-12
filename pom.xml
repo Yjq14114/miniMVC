@@ -25,7 +25,7 @@
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jsp.version>2.2</jsp.version>
         <jstl.version>1.2</jstl.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.13.1</junit.version>
         <slfj.version>1.7.7</slfj.version>
         <mysql.version>5.1.33</mysql.version>
         <lang3.version>3.3.2</lang3.version>
